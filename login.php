@@ -14,26 +14,18 @@ $stmt = $con->prepare($sql);
 $stmt->execute();
  
 if ($stmt->rowCount() == 0){
-
-    echo "'";
-    echo $id,", ",;
-    echo "'계정은 찾을 수 없습니다.";
+    echo "계정을 찾을 수 없습니다.";
 } else{
 
    	$data = array(); 
+	extract($row);
 
-        while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
-
-        	extract($row);
-
-            array_push($data, 
-                array('id'=>$row["id"],
-                'password'=>$row["password"],
-                'nickname'=>$row["nickname"],
-		'email'=>$row["email"]
-            ));
-	}
-
+        array_push($data, 
+        	array('id'=>$row["id"],
+        		'password'=>$row["password"],
+        		'nickname'=>$row["nickname"],
+			'email'=>$row["email"]
+	            ));
 
         if (!$android) {
             echo "<pre>"; 
@@ -46,11 +38,6 @@ if ($stmt->rowCount() == 0){
             echo $json;
         }
     }
-
-else {
-    echo "계정 정보를 입력하세요. ";
-}
-
 ?>
 
 
