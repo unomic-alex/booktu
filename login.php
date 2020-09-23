@@ -28,8 +28,8 @@ else {
 	$data = array();
 	extract($row);
 	
-	print($row["id"]);
-	print($row["password"]);
+	echo $row["id"];
+	echo $row["password"];
 	
 	array_push($data,
 		array('id'=>$row["id"],
