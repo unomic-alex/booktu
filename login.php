@@ -7,24 +7,20 @@ include('dbcon.php');
 //POST 값을 읽어온다.
 $id =isset($_POST['id']) ? $_POST['id'] : '';
 $password = isset($_POST['password']) ? $_POST['password'] : '';
-$android = strpos($_SERVER['HTTP_USER_AGENT'], "Android");
+$android = strpos($_SERVER['HTTP_USER_AGENT'], "Android"); 
 
-
-if ($id != "" ){ 
-
-    $sql="select * from member where id='$id' and password='$password'";
-    $stmt = $con->prepare($sql);
-    $stmt->execute();
+$sql="select * from member where id='$id' and password='$password'";
+$stmt = $con->prepare($sql);
+$stmt->execute();
  
-    if ($stmt->rowCount() == 0){
+if ($stmt->rowCount() == 0){
 
-        echo "'";
-        echo $id,", ",;
-        echo "'계정은 찾을 수 없습니다.";
-    }
-	else{
+    echo "'";
+    echo $id,", ",;
+    echo "'계정은 찾을 수 없습니다.";
+} else{
 
-   		$data = array(); 
+   	$data = array(); 
 
         while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -36,7 +32,7 @@ if ($id != "" ){
                 'nickname'=>$row["nickname"],
 		'email'=>$row["email"]
             ));
-        }
+	}
 
 
         if (!$android) {
@@ -50,7 +46,7 @@ if ($id != "" ){
             echo $json;
         }
     }
-}
+
 else {
     echo "계정 정보를 입력하세요. ";
 }
