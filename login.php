@@ -4,8 +4,6 @@ ini_set('display_errors',1);
 
 include('dbcon.php');
 
-
-
 //POST 값을 읽어온다.
 $id =isset($_POST['id']) ? $_POST['id'] : '';
 $password = isset($_POST['password']) ? $_POST['password'] : '';
