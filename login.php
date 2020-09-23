@@ -1,29 +1,71 @@
+<?php  
+error_reporting(E_ALL); 
+ini_set('display_errors',1); 
+
+include('dbcon.php');
+
+
+
+//POST 값을 읽어온다.
+$id=isset($_POST['id']) ? $_POST['id'] : '';
+$password = isset($_POST['password']) ? $_POST['password'] : '';
+$android = strpos($_SERVER['HTTP_USER_AGENT'], "Android");
+
+// 계정정보 검색
+$sql="select id, password from member where id='$id' and password='$password'";
+$stmt = $con->prepare($sql);
+$stmt->execute();
+
+if ($stmt->rowCount() == 0) {
+	
+	echo "";
+	echo "아이디나 비밀번호를 확인하세요.";
+
+}
+else {
+	
+	$data = array();
+	extract($row);
+	
+	array_push($data,
+		array('id'=>$row["id"],
+		'password'=>$row["password"]	 
+	));
+	
+        if (!$android) {
+            echo "<pre>"; 
+            print_r($data); 
+            echo '</pre>';
+        }else
+        {
+            header('Content-Type: application/json; charset=utf8');
+            $json = json_encode(array("webnautes"=>$data), JSON_PRETTY_PRINT+JSON_UNESCAPED_UNICODE);
+            echo $json;
+        }
+	
+	
+}
+?>
+
 <?php
-	//쿼리
-	$query = "select * from moviestar";
-	$conn = mysql_connect("booktu-db.mariadb.database.azure.com","oneso@booktu-db","1little_0714");
-	mysql_select_db("booktu", $conn);
 
-	//한글 깨짐문제 해결방법.
-	/*
-	mysql_query("set session character_set_connection=utf8;");
-	mysql_query("set session character_set_results=utf8;");
-	mysql_query("set session character_set_client=utf8;");
-	*/
-	mysql_query("set names utf8"); //간단히 이거 한줄이면 되네
+$android = strpos($_SERVER['HTTP_USER_AGENT'], "Android");
 
-	$result = mysql_query($query, $conn);
+if (!$android){
+?>
+<html>
+   <body>
+   
+      <form action="<?php $_PHP_SELF ?>" method="POST">
+         id: <input type = "text" name = "id" />
+         password: <input type = "text" name = "password" />
+         <input type = "submit" />
+      </form>
+   
+   </body>
+</html>
+<?php
+}
 
-	while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
-		$res['id'] = $row["id"];
-		$res['password'] = urlencode($row["password"]);
-		$res['nickname'] = urlencode($row["nickname"]);
-		$res['email'] =urlencode($row["email"]);
-		$arr["result"][] = $res;
-	}
-
-	$json = json_encode ($arr);
-	$json = urldecode ($json);
-	print $json;
-	mysql_close($conn);
+   
 ?>
