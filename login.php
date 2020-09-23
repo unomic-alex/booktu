@@ -25,12 +25,15 @@ if ($stmt->rowCount() == 0) {
 else {
 	
 	$data = array();
+	
+	while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
 	extract($row);
 	
 	array_push($data,
 		array('id'=>$row["id"],
 		'password'=>$row["password"]	 
 	));
+	}
 	
         if (!$android) {
             echo "<pre>"; 
