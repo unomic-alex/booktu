@@ -29,7 +29,7 @@ if ($stmt->rowCount() == 0){
 	            ));
 	}
 	
-	echo $data
+	echo "$data"
 
         if (!$android) {
             echo "<pre>"; 
