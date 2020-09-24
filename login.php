@@ -28,6 +28,8 @@ if ($stmt->rowCount() == 0){
 			'email'=>$row["email"]
 	            ));
 	}
+	
+	echo $data
 
         if (!$android) {
             echo "<pre>"; 
@@ -36,7 +38,7 @@ if ($stmt->rowCount() == 0){
         }else
         {
             header('Content-Type: application/json; charset=utf8');
-            echo json_encode($data, true);
+            echo json_encode($data);
         }
     }
 ?>
