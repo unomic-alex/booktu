@@ -35,8 +35,9 @@ if ($stmt->rowCount() == 0){
             echo '</pre>';
         }else
         {
-            header('Content-Type: application/json; charset=utf8');
-            echo json_encode($data);
+        	header('Content-Type: application/json; charset=utf8');
+        	echo json_encode($data);
+		echo "$data";
         }
     }
 ?>
