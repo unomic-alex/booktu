@@ -37,9 +37,8 @@ if ($stmt->rowCount() == 0){
 ?>
 
 
-
+/*
 <?php
-
 $android = strpos($_SERVER['HTTP_USER_AGENT'], "Android");
 
 if (!$android){
@@ -58,6 +57,6 @@ if (!$android){
 </html>
 <?php
 }
-
    
 ?>
+*/
