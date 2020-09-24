@@ -11,25 +11,7 @@ $android = strpos($_SERVER['HTTP_USER_AGENT'], "Android");
 
 $sql="select * from member where id='$id' and password='$password'";
 
-// 변경코드
 
-// 쿼리 실행
-$result = mysqli_query($sql);
-$result_array = array();
-
-while($row=mysqli_fetch_array($result, MYSQLI_ASSOC)){
-	$result_array[]=$row;
-};
-
-$result_array = json_encode($reslut_array);
-
-echo $_GET['callback'].'('.$result_array.')';
-
-mysqli_free_result($result);
-// 변경코드 끝
-
-
-/*
 $stmt = $con->prepare($sql);
 // $stmt->execute();
  
@@ -49,10 +31,10 @@ if ($stmt->rowCount() == 0){
 	}
 	
 	header('Content-Type: application/json; charset=utf8');
-	echo json_encode((array)$data, JSON_UNESCAPED, UNICODE);
+	echo json_encode($data, JSON_UNESCAPED, UNICODE);
 	mysqli_close($con);
 
-    } */
+    } 
 
 ?>
 
