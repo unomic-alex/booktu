@@ -13,7 +13,7 @@ $sql="select * from member where id='$id' and password='$password'";
 
 
 $stmt = $con->prepare($sql);
-// $stmt->execute();
+$stmt->execute();
  
 if ($stmt->rowCount() == 0){
     echo "계정을 찾을 수 없습니다.";
