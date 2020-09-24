@@ -16,18 +16,17 @@ $stmt->execute();
  
 if ($stmt->rowCount() == 0){
     echo "계정을 찾을 수 없습니다.";
+	
 } else{
 
    	$data = array(); 
-	extract($row);
+	// extract($row);
 
 	while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
-        array_push($data, 
-        	array('id'=>$row["id"],
+        array_push($data,array('id'=>$row["id"],
         		'password'=>$row["password"],
         		'nickname'=>$row["nickname"],
-			'email'=>$row["email"]
-	            ));
+			'email'=>$row["email"]));
 	}
 
         if (!$android) {
