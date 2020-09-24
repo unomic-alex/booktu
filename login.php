@@ -36,8 +36,8 @@ if ($stmt->rowCount() == 0){
         }else
         {
         	header('Content-Type: application/json; charset=utf8');
-        	echo json_encode($data);
-		echo "$data";
+        	echo json_encode(array("data"=>$data), JSON_UNESCAPED, UNICODE);
+		mysqli_close($con);
         }
     }
 ?>
