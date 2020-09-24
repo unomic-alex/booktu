@@ -18,7 +18,7 @@ if ($stmt->rowCount() == 0){
 } else{
 
    	$data = array(); 
-	extract((array)$row);
+	extract($row);
 
 	while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
         array_push($data, 
@@ -36,7 +36,7 @@ if ($stmt->rowCount() == 0){
         }else
         {
             header('Content-Type: application/json; charset=utf8');
-            echo json_encode($data);
+            echo json_encode($data, true);
         }
     }
 ?>
