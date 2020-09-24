@@ -28,8 +28,6 @@ if ($stmt->rowCount() == 0){
 			'email'=>$row["email"]
 	            ));
 	}
-	
-	echo "$data"
 
         if (!$android) {
             echo "<pre>"; 
