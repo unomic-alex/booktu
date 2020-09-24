@@ -18,8 +18,7 @@ if ($stmt->rowCount() == 0){
 } else{
 
    	$data = array(); 
-	if(empty($row)) return;
-	extract($row);
+	extract((array)$row);
 
 	while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
         array_push($data, 
