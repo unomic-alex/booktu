@@ -28,17 +28,11 @@ if ($stmt->rowCount() == 0){
         		'nickname'=>$row["nickname"],
 			'email'=>$row["email"]));
 	}
+	
+	header('Content-Type: application/json; charset=utf8');
+	echo json_encode((array)$data, JSON_UNESCAPED, UNICODE);
+	mysqli_close($con);
 
-        if (!$android) {
-            echo "<pre>"; 
-            print_r($data); 
-            echo '</pre>';
-        }else
-        {
-        	header('Content-Type: application/json; charset=utf8');
-        	echo json_encode((array)$data, JSON_UNESCAPED, UNICODE);
-		mysqli_close($con);
-        }
     }
 
 ?>
