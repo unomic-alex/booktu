@@ -10,6 +10,30 @@ $password = isset($_POST['password']) ? $_POST['password'] : '';
 $android = strpos($_SERVER['HTTP_USER_AGENT'], "Android"); 
 
 $sql="select * from member where id='$id' and password='$password'";
+
+// 변경 코드
+$response = array();
+$posts = array();
+$result=mysql_query($sql);
+
+while($row=mysql_fetch_array($result)) {
+	$id=$row['id'];
+	$password=$row['password'];
+	$nickname=$row['nickname'];
+	$email=$email['email'];
+	
+	$posts[] = array('id'=>$id,
+			 'password'=>$password,
+			 'nickname'=>$nickname,
+			 'email'=>$email);
+}
+
+$response['posts'] = $posts;
+echo json_encode($response);
+
+// 변경 코드 끝
+
+/*
 $stmt = $con->prepare($sql);
 $stmt->execute();
  
@@ -40,6 +64,7 @@ if ($stmt->rowCount() == 0){
 		mysqli_close($con);
         }
     }
+*/
 ?>
 
 
