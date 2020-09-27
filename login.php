@@ -9,7 +9,8 @@ $id =isset($_POST['id']) ? $_POST['id'] : '';
 $password = isset($_POST['password']) ? $_POST['password'] : '';
 $android = strpos($_SERVER['HTTP_USER_AGENT'], "Android"); 
 
-$sql="select * from member where id='$id' and password='$password'";
+//$sql="select * from member where id='$id' and password='$password'";
+$sql="select * from member";
 
 
 $stmt = $con->prepare($sql);
