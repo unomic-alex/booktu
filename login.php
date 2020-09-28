@@ -35,7 +35,7 @@ if ($stmt->rowCount() == 0){
 	echo json_encode($data);
 	*/
 	
-	echo ($id, $nickname, $email);
+	echo json_encode(array($id, $nickname, $email));
     } 
 
 ?>
