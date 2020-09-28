@@ -29,7 +29,7 @@ if ($stmt->rowCount() == 0){
 	}
 	
 	header('Content-Type: application/json; charset=utf8');
-	echo json_encode('data'=>$row["data"]);
+	echo json_encode('data'=>$data);
     } 
 
 ?>
