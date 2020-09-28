@@ -20,7 +20,7 @@ if ($stmt->rowCount() == 0){
 } else{
 
    	$data = array(); 
-	// extract($row);
+	extract($row);
 
 	
 	while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
