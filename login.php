@@ -22,20 +22,20 @@ if ($stmt->rowCount() == 0){
    	$data = array(); 
 	// extract($row);
 
-	/*
+	
 	while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
         array_push($data,array('id'=>$row["id"],
         		'nickname'=>$row["nickname"],
 			'email'=>$row["email"]));
 	}
-	*/
 	
-	/*
+	
+	
 	header('Content-Type: application/json; charset=utf8');
 	echo json_encode($data);
-	*/
 	
-	echo ($id, $nickname, $email);
+	
+	// echo ($id, $nickname, $email);
     } 
 
 ?>
