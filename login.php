@@ -24,9 +24,9 @@ if ($stmt->rowCount() == 0){
 
 	
 	while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
-        array_push($data,array('id'=>$row["id"],
+        array_push($data,'id'=>$row["id"],
         		'nickname'=>$row["nickname"],
-			'email'=>$row["email"]));
+			'email'=>$row["email"]);
 	}
 	
 	
