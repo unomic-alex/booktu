@@ -5,10 +5,10 @@ ini_set('display_errors',1);
 include('dbcon.php');
 
 //POST 값을 읽어온다.
-$id=isset($_POST['id']) ? $_POST['id'] : '';
+$writer_id=isset($_POST['writer_id']) ? $_POST['writer_id'] : '';
 
 //사용자의 독후감 리스트 읽어오기.
-$sql="select book_image, title, content from report where writer_id='$id'";
+$sql="select book_image, title, content from report where writer_id='$writer_id'";
 
 $stmt=$con->prepare($sql);
 $stmt->execute();
