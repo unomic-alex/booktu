@@ -7,8 +7,6 @@
 
 
     $android = strpos($_SERVER['HTTP_USER_AGENT'], "Android");
-    print "pleeese";
-    echo "pleeeeese";
 
 
     if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $android )
@@ -32,10 +30,12 @@
                 if($stmt->execute())
                 {
                     $successMSG = "새로운 독후감을 추가했습니다.";
+			print $successMSG
                 }
                 else
                 {
                     $errMSG = "독후감 추가 에러";
+			print $errMSG
                 }
 
             } catch(PDOException $e) {
