@@ -30,12 +30,10 @@
                 if($stmt->execute())
                 {
                     $successMSG = "새로운 독후감을 추가했습니다.";
-		    echo "review insert success"; 
                 }
                 else
                 {
                     $errMSG = "독후감 추가 에러";
-		    echo "review insert fail";
                 }
 
             } catch(PDOException $e) {
