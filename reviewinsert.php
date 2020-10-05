@@ -7,6 +7,7 @@
 
 
     $android = strpos($_SERVER['HTTP_USER_AGENT'], "Android");
+    print "pleeese";
     echo "pleeeeese";
 
 
