@@ -16,6 +16,8 @@
         $isbn=$_POST['isbn'];
         $title=$_POST['title'];
         $content=$_POST['content'];
+	    
+	    echo "yes"
 
         if(!isset($errMSG))
         {
@@ -27,18 +29,19 @@
                 $stmt->bindParam(':title', $title);
                 $stmt->bindParam(':content', $content);
 		    
-		    echo ("yes");
-
                 if($stmt->execute())
                 {
                     $successMSG = "새로운 독후감을 추가했습니다.";
+			echo "add review";
                 }
                 else
                 {
                     $errMSG = "독후감 추가 에러";
+			echo "add error";
                 }
 
             } catch(PDOException $e) {
+		    echo "exception occered.";
                 die("Database error: " . $e->getMessage()); 
             }
         }
