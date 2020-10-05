@@ -26,6 +26,8 @@
                 $stmt->bindParam(':isbn', $isbn);
                 $stmt->bindParam(':title', $title);
                 $stmt->bindParam(':content', $content);
+		    
+		    echo ("yes");
 
                 if($stmt->execute())
                 {
@@ -43,13 +45,4 @@
 
     }
 
-?>
-
-
-<?php 
-    if (isset($errMSG)) echo $errMSG;
-    if (isset($successMSG)) echo $successMSG;
-
-	$android = strpos($_SERVER['HTTP_USER_AGENT'], "Android");
-   
 ?>
