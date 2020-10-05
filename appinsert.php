@@ -32,7 +32,7 @@
             $errMSG = "email 입력하세요.";
         }
 
-        if(!isset($errMSG)) // 이름과 나라 모두 입력이 되었다면 
+        if(!isset($errMSG)) 
         {
             try{
                 // SQL문을 실행하여 데이터를 MySQL 서버의 person 테이블에 저장합니다. 
