@@ -15,18 +15,20 @@
         // 안드로이드 코드의 postParameters 변수에 적어준 이름을 가지고 값을 전달 받습니다.
 
         $writer_id=$_POST['writer_id'];
-        $isbn=$_POST['isbn'];
         $title=$_POST['title'];
         $content=$_POST['content'];
+	$book_title=$_POST['book_title'];
+	$book_image=$_POST['book_image'];
 
         if(!isset($errMSG)) 
         {
             try{
-                $stmt = $con->prepare('INSERT INTO report(writer_id, isbn, title, content) VALUES(:writer_id, :isbn, :title, :content)');
+                $stmt = $con->prepare('INSERT INTO report(writer_id, title, content, book_title, book_image) VALUES(:writer_id, :title, :content, :book_title, :book_image)');
                 $stmt->bindParam(':writer_id', $writer_id);
-                $stmt->bindParam(':isbn', $isbn);
                 $stmt->bindParam(':title', $title);
                 $stmt->bindParam(':content', $content);
+                $stmt->bindParam(':book_title', $book_title);
+                $stmt->bindParam(':book_image', $book_image);
 
                 if($stmt->execute())
                 {
@@ -61,9 +63,11 @@
 
             <form action="<?php $_PHP_SELF ?>" method="POST">
                 Writer_id: <input type = "text" name = "writer_id" />
-                Isbn: <input type = "text" name = "isbn" />
                 Title: <input type = "text" name = "title" />
                 Content: <input type = "text" name = "content" />
+		Book_title: <input type = "text" name = "book_title" />
+                Book_image: <input type = "text" name = "book_image" />
+
                 <input type = "submit" name = "submit" />
             </form>
        
