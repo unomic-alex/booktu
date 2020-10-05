@@ -7,6 +7,7 @@
 
 
     $android = strpos($_SERVER['HTTP_USER_AGENT'], "Android");
+    echo "pleeeeese";
 
 
     if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $android )
@@ -17,8 +18,6 @@
         $title=$_POST['title'];
         $content=$_POST['content'];
 	    
-	    echo "yes"
-
         if(!isset($errMSG))
         {
             try{
@@ -32,16 +31,13 @@
                 if($stmt->execute())
                 {
                     $successMSG = "새로운 독후감을 추가했습니다.";
-			echo "add review";
                 }
                 else
                 {
                     $errMSG = "독후감 추가 에러";
-			echo "add error";
                 }
 
             } catch(PDOException $e) {
-		    echo "exception occered.";
                 die("Database error: " . $e->getMessage()); 
             }
         }
