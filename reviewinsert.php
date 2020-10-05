@@ -8,6 +8,9 @@
 
     $android = strpos($_SERVER['HTTP_USER_AGENT'], "Android");
 
+    print('print test');
+    echo('echo test');
+
 
     if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $android )
     {
