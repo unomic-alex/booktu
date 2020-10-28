@@ -37,10 +37,12 @@
                 if($stmt->execute())
                 {
                     $successMSG = "새로운 독후감을 추가했습니다.";
+		    echo $successMSG
                 }
                 else
                 {
                     $errMSG = "독후감 추가 에러";
+		    echo $errMSG
                 }
 
             } catch(PDOException $e) {
