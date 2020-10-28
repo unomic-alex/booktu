@@ -25,7 +25,7 @@
         if(!isset($errMSG)) 
         {
             try{
-                $stmt = $con->prepare('INSERT INTO report (writer_id, title, content, book_title, book_image, book_publisher, book_author) VALUES(:writer_id, :title, :content, :book_title, :book_image, :book_publisher, :book_author)');
+                $stmt = $con->prepare('INSERT INTO booktu.report (writer_id, title, content, book_title, book_image, book_publisher, book_author) VALUES(:writer_id, :title, :content, :book_title, :book_image, :book_publisher, :book_author)');
                 $stmt->bindParam(':writer_id', $writer_id);
                 $stmt->bindParam(':title', $title);
                 $stmt->bindParam(':content', $content);
