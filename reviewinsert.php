@@ -1,57 +1,27 @@
 <?php 
+error_reporting(E_ALL); 
+ini_set('display_errors',1); 
 
-    error_reporting(E_ALL); 
-    ini_set('display_errors',1); 
+include('dbcon.php');
 
-    include('dbcon.php');
+$writer_id=isset($_POST['writer_id']) ? $_POST['writer_id'] : '';
+$title=isset($_POST['title']) ? $_POST['title'] : '';
+$content=isset($_POST['content']) ? $_POST['content'] : '';
 
+$book_title=isset($_POST['book_title']) ? $_POST['book_title'] : '';
+$book_image=isset($_POST['book_image']) ? $_POST['book_image'] : '';
+$book_publisher=isset($_POST['book_publisher']) ? $_POST['book_publisher'] : '';
+$book_author=isset($_POST['book_author']) ? $_POST['book_author'] : '';
 
-    $android = strpos($_SERVER['HTTP_USER_AGENT'], "Android");
+$android=strpos($_SERVER['HTTP_USER_AGENT'], "Android");
 
+$sql="INSERT INTO booktu.report (writer_id, title, content, book_title, book_image, book_publisher, book_author) VALUES ('$writer_id', '$title', '$content', '$book_title', '$book_image', '$book_publisher', '$book_author'
+)";
 
-    if( (($_SERVER['REQUEST_METHOD'] == 'POST') && isset($_POST['submit'])) || $android )
-    {
+$stmt=$con->prepare($sql);
+$stmt->execute();
 
-        // 안드로이드 코드의 postParameters 변수에 적어준 이름을 가지고 값을 전달 받습니다.
-
-        $writer_id=$_POST['writer_id'];
-        $title=$_POST['title'];
-        $content=$_POST['content'];
-	$book_title=$_POST['book_title'];
-	$book_image=$_POST['book_image'];
-	$book_publisher=$_POST['book_publisher'];
-	$book_author=$_POST['book_author'];
-
-        if(!isset($errMSG)) 
-        {
-            try{
-                $stmt = $con->prepare('INSERT INTO booktu.report (writer_id, title, content, book_title, book_image, book_publisher, book_author) VALUES(:writer_id, :title, :content, :book_title, :book_image, :book_publisher, :book_author)');
-                $stmt->bindParam(':writer_id', $writer_id);
-                $stmt->bindParam(':title', $title);
-                $stmt->bindParam(':content', $content);
-                $stmt->bindParam(':book_title', $book_title);
-                $stmt->bindParam(':book_image', $book_image);
-		$stmt->bindParam(':book_publisher', $book_publisher);
-		$stmt->bindParam(':book_author', $book_author);
-
-                if($stmt->execute())
-                {
-                    $successMSG = "새로운 독후감을 추가했습니다.";
-		    echo $successMSG
-                }
-                else
-                {
-                    $errMSG = "독후감 추가 에러";
-		    echo $errMSG
-                }
-
-            } catch(PDOException $e) {
-                die("Database error: " . $e->getMessage()); 
-            }
-        }
-
-    }
-
+echo "sucess"
 ?>
 
 
