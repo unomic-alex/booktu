@@ -72,7 +72,7 @@
 		Book_title: <input type = "text" name = "book_title" />
                 Book_image: <input type = "text" name = "book_image" />
 		Book_publisher: <input type = "text" name = "book_publisher" />
-		Book_author: <inpit type = "text" name = "book_author" />
+		Book_author: <input type = "text" name = "book_author" />
 
                 <input type = "submit" name = "submit" />
             </form>
