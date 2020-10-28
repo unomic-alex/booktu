@@ -55,18 +55,13 @@
 ?>
 
 
-<?php 
-    if (isset($errMSG)) echo $errMSG;
-    if (isset($successMSG)) echo $successMSG;
+<?php
+$android = strpos($_SERVER['HTTP_USER_AGENT'], "Android");
 
-	$android = strpos($_SERVER['HTTP_USER_AGENT'], "Android");
-   
-    if( !$android )
-    {
+if (!$android){
 ?>
-    <html>
-       <body>
-
+<html>
+	<body>
             <form action="<?php $_PHP_SELF ?>" method="POST">
                 Writer_id: <input type = "text" name = "writer_id" />
                 Title: <input type = "text" name = "title" />
@@ -75,12 +70,10 @@
                 Book_image: <input type = "text" name = "book_image" />
 		Book_publisher: <input type = "text" name = "book_publisher" />
 		Book_author: <input type = "text" name = "book_author" />
-
                 <input type = "submit" name = "submit" />
             </form>
-       
        </body>
-    </html>
+</html>
 <?php 
     }
 ?>
