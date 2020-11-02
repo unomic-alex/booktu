@@ -5,14 +5,14 @@ ini_set('display_errors',1);
 include('dbcon.php');
 
 //POST 값을 읽어온다.
-$title=isset($_POST['title']) ? $_POST['title'] : '';
+$article_num=isset($_POST['article_num']) ? $_POST['article_num'] : '';
 
-$sql="delete from report where title='$title'";
+$sql="DELETE FROM booktu.report WHERE article_num='$article_num";
 
 $stmt=$con->prepare($sql);
 $stmt->execute();
 	
 header('Content-Type: application/json; charset=utf8');
-echo "string return";
+echo "deleted";
 
 ?>
