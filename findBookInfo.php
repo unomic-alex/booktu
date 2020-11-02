@@ -7,7 +7,7 @@ include('dbcon.php');
 //POST 값을 읽어온다.
 $book_image=isset($_POST['book_image']) ? $_POST['book_image'] : '';
 
-$sql="select book_title, book_author, book_publisher from report where book_image='$book_image'";
+$sql="select article_num, book_title, book_author, book_publisher from report where book_image='$book_image'";
 
 $stmt=$con->prepare($sql);
 $stmt->execute();
@@ -21,7 +21,8 @@ if ($stmt->rowCount() == 0){
 	// extract($row);
 
 	while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
-        	array_push($data,array('book_title'=>$row["book_title"],
+        	array_push($data,array('article_num'=>$row["article_num"],
+				'book_title'=>$row["book_title"],
         			'book_author'=>$row["book_author"],
 				'book_publisher'=>$row["book_publisher"]));
 	}
