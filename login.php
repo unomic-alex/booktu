@@ -36,25 +36,4 @@ if ($stmt->rowCount() == 0){
 
 
 
-<?php
-$android = strpos($_SERVER['HTTP_USER_AGENT'], "Android");
-
-if (!$android){
-?>
-
-<html>
-   <body>
-   
-      <form action="<?php $_PHP_SELF ?>" method="POST">
-         아이디: <input type = "text" name = "id" />
-         패스워드: <input type = "text" name = "password" />
-         <input type = "submit" />
-      </form>
-   
-   </body>
-</html>
-<?php
-}
-   
-?>
 
